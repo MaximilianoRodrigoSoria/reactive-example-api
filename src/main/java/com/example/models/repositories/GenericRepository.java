@@ -3,7 +3,9 @@ package com.example.models.repositories;
 import com.example.models.documents.Generic;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Mono;
 
 @Repository
-public interface GenericDocument extends ReactiveMongoRepository<String, Generic> {
+public interface GenericRepository extends ReactiveMongoRepository<Generic, String> {
+    public Mono<Generic> findById(String executionId);
 }
