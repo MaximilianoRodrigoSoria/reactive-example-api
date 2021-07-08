@@ -4,12 +4,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 @Setter
-public class GenericDTO {
+public class GenericRequest {
+
     private String name;
     private String description;
-    private LocalDateTime createAt;
 
 }

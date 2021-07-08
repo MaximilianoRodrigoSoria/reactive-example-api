@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Document(collection = "generic")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -23,6 +24,9 @@ public class Generic implements Serializable {
     private static final long serialVersionUID = -5824709982771246183L;
     @Id
     private String id;
+
+    private UUID uuid;
+
     @JsonProperty("name")
     private String name;
     @JsonProperty("description")
@@ -32,6 +36,7 @@ public class Generic implements Serializable {
 
 
     public Generic() {
+        this.uuid = UUID.randomUUID();
         this.createAt = LocalDateTime.now();
     }
 

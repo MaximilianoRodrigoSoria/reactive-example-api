@@ -1,12 +1,11 @@
 package com.example.controllers;
 
-import com.example.models.dtos.GenericDTO;
+import com.example.models.dtos.GenericRequest;
+import com.example.models.dtos.GenericResponse;
 import com.example.services.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
@@ -23,7 +22,12 @@ public class GenericController {
     }
 
     @PostMapping("/generic")
-    public Mono<GenericDTO> save(@RequestBody GenericDTO dto){
+    public Mono<GenericResponse> save(@RequestBody GenericRequest dto){
         return service.save(dto);
+    }
+
+    @GetMapping("/generic")
+    public Flux<GenericResponse> getAll(){
+        return service.findAll();
     }
 }

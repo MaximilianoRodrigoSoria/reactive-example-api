@@ -29,6 +29,9 @@ public class BaseException extends RuntimeException {
 
     }
 
+
+
+
     public Map<String, Object> getVariables() {
          return this.variables;
     }
