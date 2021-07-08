@@ -26,7 +26,7 @@ public class ApiExceptionHandler {
             NotFoundException.class
     })
     @ResponseBody
-    public ErrorMessage notFoundRequest(Exception exception) {
+    public ErrorMessage notFoundRequest(BaseException exception) {
         return new ErrorMessage(exception, HttpStatus.NOT_FOUND.value()) ;
     }
 
@@ -38,7 +38,7 @@ public class ApiExceptionHandler {
             org.springframework.web.server.ServerWebInputException.class
     })
     @ResponseBody
-    public ErrorMessage badRequest(Exception exception) {
+    public ErrorMessage badRequest(BaseException exception) {
         return new ErrorMessage(exception, HttpStatus.BAD_REQUEST.value());
     }
 
@@ -47,8 +47,8 @@ public class ApiExceptionHandler {
             ConflictException.class
     })
     @ResponseBody
-    public ErrorMessage conflict(ConflictException exception) {
-        return new ErrorMessage(exception, HttpStatus.CONFLICT.value(), exception.getVariables(), exception.getMessage() );
+    public ErrorMessage conflict(BaseException exception) {
+        return new ErrorMessage(exception, HttpStatus.CONFLICT.value(), exception.getVariables(), exception.getMessage(), exception.getPath() );
     }
 
 
@@ -58,7 +58,7 @@ public class ApiExceptionHandler {
             ForbiddenException.class
     })
     @ResponseBody
-    public ErrorMessage forbidden(Exception exception) {
+    public ErrorMessage forbidden(BaseException exception) {
         return new ErrorMessage(exception, HttpStatus.FORBIDDEN.value());
     }
 
@@ -67,7 +67,7 @@ public class ApiExceptionHandler {
             BadGatewayException.class
     })
     @ResponseBody
-    public ErrorMessage badGateway(Exception exception) {
+    public ErrorMessage badGateway(BaseException exception) {
         return new ErrorMessage(exception, HttpStatus.BAD_GATEWAY.value());
     }
 

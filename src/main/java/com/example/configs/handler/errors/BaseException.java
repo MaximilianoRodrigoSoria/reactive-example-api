@@ -3,17 +3,29 @@ package com.example.configs.handler.errors;
 import java.util.Map;
 
 public class BaseException extends RuntimeException {
-    private static final String DESCRIPTION = "Conflict Exception ";
+
     private Map<String, Object> variables;
     private String message;
+    private String path;
 
     public BaseException(String detail) {
-        this.message = DESCRIPTION + ". " + detail;
+        this.message = detail;
     }
 
     public BaseException(String detail, Map<String, Object> variables) {
         this.variables = variables;
-        this.message = DESCRIPTION + ". " + detail;
+        this.message =  detail;
+    }
+
+    public BaseException(String detail, Map<String, Object> variables, String path) {
+        this.variables = variables;
+        this.message =  detail;
+        this.path = path;
+    }
+
+    public BaseException(String detail, String path) {
+        this.message = detail;
+        this.path =  path;
 
     }
 
@@ -23,5 +35,9 @@ public class BaseException extends RuntimeException {
 
     public String getMessage() {
         return this.message;
+    }
+
+    public String getPath(){
+        return this.path;
     }
 }

@@ -2,27 +2,23 @@ package com.example.configs.handler.errors;
 
 import java.util.Map;
 
-public class ConflictException extends RuntimeException {
+
+public class ConflictException extends BaseException {
     private static final String DESCRIPTION = "Conflict Exception ";
-    private Map<String, Object> variables;
-    private String message;
+
 
     public ConflictException(String detail) {
-        this.message = DESCRIPTION + ". " + detail;
+        super(DESCRIPTION +" . " +detail);
     }
-
 
     public ConflictException(String detail, Map<String, Object> variables) {
-        this.variables = variables;
-        this.message = DESCRIPTION + ". " + detail;
+        super(DESCRIPTION +" . " +detail, variables);    }
 
+    public ConflictException(String detail, Map<String, Object> variables, String path) {
+        super(DESCRIPTION +" . " +detail, variables, path);
     }
 
-    public Map<String, Object> getVariables() {
-         return this.variables;
-    }
-
-    public String getMessage() {
-        return this.message;
+    public ConflictException(String detail, String path) {
+        super(DESCRIPTION +" . " +detail, path);
     }
 }
