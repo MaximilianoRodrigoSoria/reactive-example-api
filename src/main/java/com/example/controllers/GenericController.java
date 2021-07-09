@@ -30,4 +30,14 @@ public class GenericController {
     public Flux<GenericResponse> getAll(){
         return service.findAll();
     }
+
+    @GetMapping("/generic/{id}")
+    public Mono<GenericResponse> findId(@PathVariable String id){
+        return service.findById(id);
+    }
+
+    @DeleteMapping("/generic/{id}")
+    public Mono<Void> delete(@PathVariable String id){
+        return service.delete(id);
+    }
 }

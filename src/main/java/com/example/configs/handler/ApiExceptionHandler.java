@@ -25,7 +25,7 @@ public class ApiExceptionHandler {
     })
     @ResponseBody
     public ErrorMessage notFoundRequest(BaseException exception) {
-        return new ErrorMessage(exception, HttpStatus.NOT_FOUND.value()) ;
+        return new ErrorMessage(exception, HttpStatus.NOT_FOUND.value(),exception.getVariables(), exception.getMessage(), exception.getPath() );
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -37,7 +37,7 @@ public class ApiExceptionHandler {
     })
     @ResponseBody
     public ErrorMessage badRequest(BaseException exception) {
-        return new ErrorMessage(exception, HttpStatus.BAD_REQUEST.value());
+        return new ErrorMessage(exception, HttpStatus.BAD_REQUEST.value(),exception.getVariables(), exception.getMessage(), exception.getPath() );
     }
 
     @ResponseStatus(HttpStatus.CONFLICT)
@@ -57,7 +57,7 @@ public class ApiExceptionHandler {
     })
     @ResponseBody
     public ErrorMessage forbidden(BaseException exception) {
-        return new ErrorMessage(exception, HttpStatus.FORBIDDEN.value());
+        return new ErrorMessage(exception, HttpStatus.FORBIDDEN.value(),exception.getVariables(), exception.getMessage(), exception.getPath() );
     }
 
     @ResponseStatus(HttpStatus.BAD_GATEWAY)
@@ -66,7 +66,7 @@ public class ApiExceptionHandler {
     })
     @ResponseBody
     public ErrorMessage badGateway(BaseException exception) {
-        return new ErrorMessage(exception, HttpStatus.BAD_GATEWAY.value());
+        return new ErrorMessage(exception, HttpStatus.BAD_GATEWAY.value(),exception.getVariables(), exception.getMessage(), exception.getPath() );
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
