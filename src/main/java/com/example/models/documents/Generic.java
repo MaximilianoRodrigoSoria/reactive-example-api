@@ -25,7 +25,7 @@ public class Generic implements Serializable {
     @Id
     private String id;
 
-    private UUID uuid;
+    private String uuid;
 
     @JsonProperty("name")
     private String name;
@@ -36,7 +36,7 @@ public class Generic implements Serializable {
 
 
     public Generic() {
-        this.uuid = UUID.randomUUID();
+        this.uuid = UUID.randomUUID().toString();
         this.createAt = LocalDateTime.now();
     }
 

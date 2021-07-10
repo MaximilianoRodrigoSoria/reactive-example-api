@@ -12,7 +12,7 @@ import java.util.UUID;
 public class GenericResponse {
 
     @JsonProperty(value = "id")
-    private UUID uuid;
+    private String uuid;
     @JsonProperty(required = true)
     private String name;
     @JsonProperty(required = true)
